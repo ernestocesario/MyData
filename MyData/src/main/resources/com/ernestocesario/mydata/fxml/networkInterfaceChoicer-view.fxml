@@ -1,0 +1,100 @@
+<?comment
+ networkInterfaceChoicer-view.fxml
+ Copyright (C) 2023 Ernesto Cesario
+
+ This file is part of MyData.
+ For the terms of the license, see the LICENSE file in the root of the repository.
+?>
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane prefHeight="350.0" prefWidth="525.0" xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.ernestocesario.mydata.controller.SelectorNetworkInterfaceController">
+    <children>
+        <VBox alignment="TOP_CENTER" spacing="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0"
+              AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
+            <children>
+                <Label>
+                    <graphic>
+                        <FontIcon iconLiteral="mdi2a-access-point-network" iconSize="65"/>
+                    </graphic>
+                    <VBox.margin>
+                        <Insets bottom="15.0"/>
+                    </VBox.margin>
+                </Label>
+                <VBox spacing="5.0">
+                    <children>
+                        <GridPane>
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                            </rowConstraints>
+                            <children>
+                                <Label alignment="TOP_LEFT" text="Select a network interface"
+                                       GridPane.halignment="LEFT">
+                                    <graphic>
+                                        <FontIcon iconLiteral="mdi2r-router-wireless" iconSize="26"
+                                                  nodeOrientation="LEFT_TO_RIGHT" styleClass="alwaysWhite"/>
+                                    </graphic>
+
+                                </Label>
+                                <Label fx:id="helpIcon" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                                    <graphic>
+                                        <FontIcon iconLiteral="mdi2t-tooltip-text-outline" iconSize="26"
+                                                  styleClass="alwaysWhite"/>
+                                    </graphic>
+                                    <tooltip>
+                                        <Tooltip fx:id="helpTooltip" text="">
+
+                                        </Tooltip>
+                                    </tooltip>
+                                </Label>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="5.0"/>
+                            </VBox.margin>
+                        </GridPane>
+                        <ListView fx:id="listView"/>
+                    </children>
+                </VBox>
+                <HBox alignment="CENTER" spacing="16.0">
+                    <children>
+                        <Button fx:id="selectBtn" alignment="CENTER" mnemonicParsing="false" onAction="#onSelectAction"
+                                prefWidth="100.0" text="Select">
+                            <graphic>
+                                <FontIcon iconLiteral="mdi2c-check-network" iconSize="20"/>
+                            </graphic>
+
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        <ProgressBar fx:id="progressBar" prefHeight="7.0" progress="0.0" AnchorPane.bottomAnchor="0.0"
+                     AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
+        <Label fx:id="backIcon" onMouseClicked="#onBackClick" textFill="WHITE" AnchorPane.bottomAnchor="14.0"
+               AnchorPane.leftAnchor="14.0">
+            <graphic>
+                <FontIcon iconLiteral="fas-arrow-circle-left" iconSize="24"/>
+            </graphic>
+        </Label>
+    </children>
+</AnchorPane>

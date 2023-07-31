@@ -1,0 +1,87 @@
+<?comment
+ senderCode-view.fxml
+ Copyright (C) 2023 Ernesto Cesario
+
+ This file is part of MyData.
+ For the terms of the license, see the LICENSE file in the root of the repository.
+?>
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.ernestocesario.truepasswordfield.TruePasswordField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane minWidth="525.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.ernestocesario.mydata.controller.SenderCodeController">
+    <children>
+        <VBox layoutX="14.0" layoutY="20.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <VBox alignment="TOP_CENTER" spacing="25.0">
+                    <children>
+                        <Label>
+                            <graphic>
+                                <FontIcon iconLiteral="mdi2e-email-send" iconSize="65"/>
+                            </graphic>
+                            <VBox.margin>
+                                <Insets bottom="5.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <VBox spacing="4.0">
+                            <children>
+                                <Label text="Transfer Code">
+                                    <graphic>
+                                        <FontIcon iconLiteral="mdi2f-folder-key-network-outline" iconSize="24"/>
+                                    </graphic>
+
+                                </Label>
+                                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                    <children>
+                                        <TruePasswordField fx:id="codeField" editable="false" HBox.hgrow="ALWAYS"/>
+                                        <Label fx:id="eyeIcon" onMouseClicked="#onEyeClick">
+                                            <graphic>
+                                                <FontIcon iconLiteral="far-eye" iconSize="24"/>
+                                            </graphic>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        <Label contentDisplay="TOP" opacity="0.8"
+                               text="Enter this transfer code on the computer where you want to receive the files.&#10;Do not close this window!&#10;It will close by itself once the connection is stable."
+                               textAlignment="CENTER" wrapText="true">
+                            <graphic>
+                                <FontIcon iconLiteral="fas-info-circle" iconSize="40"/>
+                            </graphic>
+
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="30.0" right="30.0" top="20.0"/>
+                    </VBox.margin>
+                </VBox>
+                <HBox>
+                    <children>
+                        <Label fx:id="backIcon" onMouseClicked="#onBackClick" textFill="WHITE">
+                            <graphic>
+                                <FontIcon iconLiteral="fas-arrow-circle-left" iconSize="24"/>
+                            </graphic>
+                        </Label>
+                    </children>
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets bottom="14.0" left="14.0"/>
+                    </VBox.margin>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

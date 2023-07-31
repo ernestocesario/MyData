@@ -1,0 +1,758 @@
+<?comment
+ settings-view.fxml
+ Copyright (C) 2023 Ernesto Cesario
+
+ This file is part of MyData.
+ For the terms of the license, see the LICENSE file in the root of the repository.
+?>
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.ernestocesario.truepasswordfield.TruePasswordField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import org.controlsfx.control.ToggleSwitch?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane fx:id="root" minHeight="700.0" minWidth="1200.0" prefHeight="700.0" xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ernestocesario.mydata.controller.SettingsController">
+    <center>
+        <SplitPane fx:id="settingsSplitPane" dividerPositions="0.3" BorderPane.alignment="CENTER">
+            <items>
+                <AnchorPane>
+                    <children>
+                        <VBox layoutY="42.0" spacing="80.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="0.0"
+                              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="42.0">
+                            <children>
+                                <HBox alignment="CENTER">
+                                    <children>
+                                        <Label fx:id="mainLabel" contentDisplay="TOP" text="MySettings">
+                                            <graphic>
+                                                <ImageView fx:id="iconImageView" fitHeight="150.0" fitWidth="150.0"
+                                                           pickOnBounds="true" preserveRatio="true"/>
+                                            </graphic>
+
+                                        </Label>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets/>
+                                    </VBox.margin>
+                                </HBox>
+                                <VBox alignment="CENTER" spacing="18.0">
+                                    <children>
+                                        <HBox alignment="CENTER">
+                                            <children>
+                                                <Label fx:id="accountSideLabel" graphicTextGap="14.0"
+                                                       maxWidth="-Infinity" minWidth="210.0"
+                                                       onMouseClicked="#onAccountClick" text="Account">
+                                                    <graphic>
+                                                        <FontIcon iconLiteral="far-user-circle" iconSize="32"
+                                                                  selectionEnd="0"/>
+                                                    </graphic>
+
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER">
+                                            <children>
+                                                <Label fx:id="uiCustomizationSideLabel" graphicTextGap="14.0"
+                                                       maxWidth="-Infinity" minWidth="210.0"
+                                                       onMouseClicked="#onUiCustomizationClick" text="UI Customization">
+                                                    <graphic>
+                                                        <FontIcon iconLiteral="far-compass" iconSize="30"/>
+                                                    </graphic>
+
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER">
+                                            <children>
+                                                <Label fx:id="appSettingsSideLabel" graphicTextGap="14.0"
+                                                       maxWidth="-Infinity" minWidth="210.0"
+                                                       onMouseClicked="#onAppSettingsClick" text="App settings">
+                                                    <graphic>
+                                                        <FontIcon iconLiteral="fas-radiation-alt" iconSize="30"/>
+                                                    </graphic>
+
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER">
+                                            <children>
+                                                <Label fx:id="accessibilitySideLabel" graphicTextGap="14.0"
+                                                       maxWidth="-Infinity" minWidth="210.0"
+                                                       onMouseClicked="#onAccessibilityClick" text="Accessibility">
+                                                    <graphic>
+                                                        <FontIcon iconLiteral="fas-universal-access" iconSize="30"/>
+                                                    </graphic>
+
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER">
+                                            <children>
+                                                <Label fx:id="aboutUsSideLabel" graphicTextGap="14.0"
+                                                       maxWidth="-Infinity" minWidth="210.0"
+                                                       onMouseClicked="#onAboutUsClick" text="About Us">
+                                                    <graphic>
+                                                        <FontIcon iconLiteral="far-question-circle" iconSize="30"/>
+                                                    </graphic>
+
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+                <AnchorPane>
+                    <children>
+                        <AnchorPane fx:id="displayAnchorPane" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0"
+                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <AnchorPane fx:id="accountSubView" AnchorPane.bottomAnchor="0.0"
+                                            AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                            AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <children>
+                                                <VBox>
+                                                    <children>
+                                                        <Label fx:id="accountSettingsTitleLabel" graphicTextGap="14.0"
+                                                               text="Account settings">
+                                                            <graphic>
+                                                                <FontIcon iconLiteral="far-user-circle" iconSize="60"/>
+                                                            </graphic>
+
+                                                            <VBox.margin>
+                                                                <Insets/>
+                                                            </VBox.margin>
+                                                        </Label>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets left="50.0" top="40.0"/>
+                                                    </VBox.margin>
+                                                </VBox>
+                                                <ScrollPane fx:id="accountSettingsScrollPane" fitToHeight="true"
+                                                            fitToWidth="true">
+                                                    <VBox.margin>
+                                                        <Insets top="44.0"/>
+                                                    </VBox.margin>
+                                                    <content>
+                                                        <VBox spacing="70.0">
+                                                            <children>
+                                                                <VBox spacing="18.0">
+                                                                    <children>
+                                                                        <Label fx:id="accountDetailsSubSectionLabel"
+                                                                               graphicTextGap="14.0"
+                                                                               text="Account details">
+                                                                            <graphic>
+                                                                                <FontIcon
+                                                                                        iconLiteral="mdi2a-account-check-outline"
+                                                                                        iconSize="42"/>
+                                                                            </graphic>
+
+                                                                        </Label>
+                                                                        <VBox spacing="16.0">
+                                                                            <children>
+                                                                                <HBox alignment="CENTER_LEFT"
+                                                                                      spacing="40.0">
+                                                                                    <children>
+                                                                                        <Label prefWidth="200.0"
+                                                                                               text="Username">
+                                                                                            <graphic>
+                                                                                                <FontIcon
+                                                                                                        iconLiteral="mdi2a-account-outline"
+                                                                                                        iconSize="28"/>
+                                                                                            </graphic>
+
+                                                                                        </Label>
+                                                                                        <TextField fx:id="usernameField"
+                                                                                                   editable="false"
+                                                                                                   HBox.hgrow="ALWAYS"/>
+                                                                                    </children>
+                                                                                </HBox>
+                                                                                <HBox alignment="CENTER_LEFT"
+                                                                                      spacing="40.0">
+                                                                                    <children>
+                                                                                        <Label prefWidth="200.0"
+                                                                                               text="Number of associated files">
+                                                                                            <graphic>
+                                                                                                <FontIcon
+                                                                                                        iconLiteral="mdi2f-file-outline"
+                                                                                                        iconSize="28"/>
+                                                                                            </graphic>
+
+                                                                                        </Label>
+                                                                                        <TextField
+                                                                                                fx:id="numAssociatedFilesField"
+                                                                                                editable="false"
+                                                                                                HBox.hgrow="ALWAYS"/>
+                                                                                    </children>
+                                                                                </HBox>
+                                                                                <HBox alignment="CENTER_LEFT"
+                                                                                      spacing="40.0">
+                                                                                    <children>
+                                                                                        <Label prefWidth="200.0"
+                                                                                               text="Number of protected files">
+                                                                                            <graphic>
+                                                                                                <FontIcon
+                                                                                                        iconLiteral="mdi2f-file-lock-outline"
+                                                                                                        iconSize="28"/>
+                                                                                            </graphic>
+
+                                                                                        </Label>
+                                                                                        <TextField
+                                                                                                fx:id="numProtectedFilesField"
+                                                                                                editable="false"
+                                                                                                HBox.hgrow="ALWAYS"/>
+                                                                                    </children>
+                                                                                </HBox>
+                                                                            </children>
+                                                                            <VBox.margin>
+                                                                                <Insets left="20.0"/>
+                                                                            </VBox.margin>
+                                                                        </VBox>
+                                                                    </children>
+                                                                    <VBox.margin>
+                                                                        <Insets/>
+                                                                    </VBox.margin>
+                                                                </VBox>
+                                                                <VBox spacing="18.0">
+                                                                    <children>
+                                                                        <Label fx:id="changePasswordSubSectionLabel"
+                                                                               graphicTextGap="14.0"
+                                                                               text="Change Password">
+                                                                            <graphic>
+                                                                                <FontIcon
+                                                                                        iconLiteral="mdi2k-key-outline"
+                                                                                        iconSize="42"/>
+                                                                            </graphic>
+
+                                                                        </Label>
+                                                                        <VBox spacing="20.0">
+                                                                            <children>
+                                                                                <HBox alignment="CENTER_LEFT"
+                                                                                      spacing="40.0">
+                                                                                    <children>
+                                                                                        <Label prefWidth="200.0"
+                                                                                               text="New password">
+                                                                                            <graphic>
+                                                                                                <FontIcon
+                                                                                                        iconLiteral="mdi2k-key-star"
+                                                                                                        iconSize="28"/>
+                                                                                            </graphic>
+
+                                                                                        </Label>
+                                                                                        <HBox alignment="CENTER"
+                                                                                              spacing="12.0"
+                                                                                              HBox.hgrow="ALWAYS">
+                                                                                            <children>
+                                                                                                <TruePasswordField
+                                                                                                        fx:id="newPasswordField"
+                                                                                                        HBox.hgrow="ALWAYS"/>
+                                                                                                <Label fx:id="eyeIcon"
+                                                                                                       onMouseClicked="#onEyeClicked"
+                                                                                                       textFill="WHITE">
+                                                                                                    <graphic>
+                                                                                                        <FontIcon
+                                                                                                                iconLiteral="fas-eye"
+                                                                                                                iconSize="22"/>
+                                                                                                    </graphic>
+                                                                                                </Label>
+                                                                                                <Label fx:id="autoGenPassIcon"
+                                                                                                       onMouseClicked="#autoGeneratePassword"
+                                                                                                       textFill="WHITE">
+                                                                                                    <graphic>
+                                                                                                        <FontIcon
+                                                                                                                iconLiteral="mdi2c-crystal-ball"
+                                                                                                                iconSize="24"
+                                                                                                                selectionEnd="0"
+                                                                                                                selectionStart="0"/>
+                                                                                                    </graphic>
+                                                                                                    <tooltip>
+                                                                                                        <Tooltip
+                                                                                                                fx:id="helpAutoGenPassTooltip"
+                                                                                                                text=""/>
+                                                                                                    </tooltip>
+                                                                                                </Label>
+                                                                                            </children>
+                                                                                        </HBox>
+                                                                                    </children>
+                                                                                </HBox>
+                                                                                <HBox alignment="CENTER" spacing="40.0">
+                                                                                    <children>
+                                                                                        <Button fx:id="changePasswordBtn"
+                                                                                                minWidth="160.0"
+                                                                                                mnemonicParsing="false"
+                                                                                                onAction="#onChangePasswordAction"
+                                                                                                style="-fx-border-color: lime;"
+                                                                                                text="Change Password"/>
+                                                                                    </children>
+                                                                                </HBox>
+                                                                            </children>
+                                                                            <VBox.margin>
+                                                                                <Insets left="20.0"/>
+                                                                            </VBox.margin>
+                                                                        </VBox>
+                                                                    </children>
+                                                                </VBox>
+                                                                <VBox spacing="18.0">
+                                                                    <children>
+                                                                        <Label fx:id="deleteAccountSubSectionLabel"
+                                                                               graphicTextGap="14.0"
+                                                                               text="Delete Account">
+                                                                            <graphic>
+                                                                                <FontIcon iconLiteral="mdi2s-skull-scan"
+                                                                                          iconSize="42"/>
+                                                                            </graphic>
+                                                                        </Label>
+                                                                        <VBox spacing="16.0">
+                                                                            <children>
+                                                                                <HBox alignment="CENTER_LEFT"
+                                                                                      spacing="40.0">
+                                                                                    <children>
+                                                                                        <Button fx:id="deleteAccountBtn"
+                                                                                                maxWidth="1.7976931348623157E308"
+                                                                                                mnemonicParsing="false"
+                                                                                                onAction="#onDeleteAccountAction"
+                                                                                                style="-fx-border-color: red;"
+                                                                                                text="DELETE MY ACCOUNT"
+                                                                                                HBox.hgrow="ALWAYS"/>
+                                                                                    </children>
+                                                                                </HBox>
+                                                                            </children>
+                                                                            <VBox.margin>
+                                                                                <Insets left="20.0"/>
+                                                                            </VBox.margin>
+                                                                        </VBox>
+                                                                    </children>
+                                                                    <VBox.margin>
+                                                                        <Insets top="30.0"/>
+                                                                    </VBox.margin>
+                                                                </VBox>
+                                                            </children>
+                                                            <padding>
+                                                                <Insets bottom="12.0" left="80.0" right="100.0"/>
+                                                            </padding>
+                                                        </VBox>
+                                                    </content>
+                                                </ScrollPane>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane fx:id="uiCustomizationSubView" layoutX="10.0" layoutY="10.0" visible="false"
+                                            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <VBox layoutX="50.0" layoutY="34.0" spacing="44.0" AnchorPane.bottomAnchor="0.0"
+                                              AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="100.0"
+                                              AnchorPane.topAnchor="40.0">
+                                            <children>
+                                                <Label fx:id="uiCustomizationTitleLabel" graphicTextGap="14.0"
+                                                       text="UI Customization">
+                                                    <graphic>
+                                                        <FontIcon iconLiteral="far-compass" iconSize="60"/>
+                                                    </graphic>
+
+                                                    <VBox.margin>
+                                                        <Insets/>
+                                                    </VBox.margin>
+                                                </Label>
+                                                <VBox spacing="70.0">
+                                                    <children>
+                                                        <VBox spacing="18.0">
+                                                            <children>
+                                                                <Label fx:id="stylesSubSectionLabel"
+                                                                       graphicTextGap="14.0" text="Styles">
+                                                                    <graphic>
+                                                                        <FontIcon iconLiteral="mdi2p-palm-tree"
+                                                                                  iconSize="42"/>
+                                                                    </graphic>
+
+                                                                </Label>
+                                                                <VBox spacing="16.0">
+                                                                    <children>
+                                                                        <HBox alignment="CENTER_LEFT" spacing="40.0">
+                                                                            <children>
+                                                                                <Label prefWidth="200.0" text="Style">
+                                                                                    <graphic>
+                                                                                        <FontIcon
+                                                                                                iconLiteral="mdi2b-brush"
+                                                                                                iconSize="28"/>
+                                                                                    </graphic>
+
+                                                                                </Label>
+                                                                                <ChoiceBox fx:id="styleBox"
+                                                                                           maxWidth="1.7976931348623157E308"
+                                                                                           HBox.hgrow="ALWAYS"/>
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox alignment="CENTER_LEFT" spacing="40.0">
+                                                                            <children>
+                                                                                <Label prefWidth="200.0" text="Theme">
+                                                                                    <graphic>
+                                                                                        <FontIcon
+                                                                                                iconLiteral="mdi2t-theme-light-dark"
+                                                                                                iconSize="28"/>
+                                                                                    </graphic>
+
+                                                                                </Label>
+                                                                                <ChoiceBox fx:id="themeBox"
+                                                                                           maxWidth="1.7976931348623157E308"
+                                                                                           HBox.hgrow="ALWAYS"/>
+                                                                            </children>
+                                                                        </HBox>
+                                                                    </children>
+                                                                    <VBox.margin>
+                                                                        <Insets left="20.0"/>
+                                                                    </VBox.margin>
+                                                                </VBox>
+                                                            </children>
+                                                            <VBox.margin>
+                                                                <Insets/>
+                                                            </VBox.margin>
+                                                        </VBox>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets left="30.0"/>
+                                                    </VBox.margin>
+                                                </VBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane fx:id="appSubView" layoutX="10.0" layoutY="10.0" visible="false"
+                                            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <VBox layoutX="50.0" layoutY="34.0" spacing="44.0" AnchorPane.bottomAnchor="0.0"
+                                              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                              AnchorPane.topAnchor="0.0">
+                                            <children>
+                                                <Label fx:id="appSettingsTitleLabel" graphicTextGap="14.0"
+                                                       text="App settings">
+                                                    <graphic>
+                                                        <FontIcon iconLiteral="fas-radiation-alt" iconSize="60"/>
+                                                    </graphic>
+
+                                                    <VBox.margin>
+                                                        <Insets left="50.0" top="40.0"/>
+                                                    </VBox.margin>
+                                                </Label>
+                                                <ScrollPane fx:id="appSettingsScrollPane" fitToHeight="true"
+                                                            fitToWidth="true">
+                                                    <VBox.margin>
+                                                        <Insets/>
+                                                    </VBox.margin>
+                                                    <content>
+                                                        <VBox spacing="70.0">
+                                                            <children>
+                                                                <VBox spacing="18.0">
+                                                                    <children>
+                                                                        <Label fx:id="filesSubSectionLabel"
+                                                                               graphicTextGap="14.0" text="Files">
+                                                                            <graphic>
+                                                                                <FontIcon
+                                                                                        iconLiteral="mdi2f-file-cog-outline"
+                                                                                        iconSize="42"/>
+                                                                            </graphic>
+
+                                                                        </Label>
+                                                                        <VBox spacing="16.0">
+                                                                            <children>
+                                                                                <HBox alignment="CENTER_LEFT"
+                                                                                      spacing="40.0">
+                                                                                    <children>
+                                                                                        <Label prefWidth="290.0"
+                                                                                               text="Show files size in:">
+                                                                                            <graphic>
+                                                                                                <FontIcon
+                                                                                                        iconLiteral="mdi2w-weight"
+                                                                                                        iconSize="28"/>
+                                                                                            </graphic>
+
+                                                                                        </Label>
+                                                                                        <ChoiceBox fx:id="sizeFileBox"
+                                                                                                   maxWidth="1.7976931348623157E308"
+                                                                                                   HBox.hgrow="ALWAYS"/>
+                                                                                    </children>
+                                                                                </HBox>
+                                                                                <HBox alignment="CENTER_LEFT"
+                                                                                      spacing="40.0">
+                                                                                    <children>
+                                                                                        <Label prefWidth="290.0"
+                                                                                               text="Round files size to N decimals">
+                                                                                            <graphic>
+                                                                                                <FontIcon
+                                                                                                        iconLiteral="mdi2n-numeric"
+                                                                                                        iconSize="28"/>
+                                                                                            </graphic>
+
+                                                                                        </Label>
+                                                                                        <ChoiceBox fx:id="sizeRoundBox"
+                                                                                                   maxWidth="1.7976931348623157E308"
+                                                                                                   HBox.hgrow="ALWAYS"/>
+                                                                                    </children>
+                                                                                </HBox>
+                                                                                <HBox alignment="CENTER_LEFT"
+                                                                                      spacing="40.0">
+                                                                                    <children>
+                                                                                        <Label prefWidth="290.0"
+                                                                                               text="Ask before removing files">
+
+                                                                                            <graphic>
+                                                                                                <FontIcon
+                                                                                                        iconLiteral="mdi2d-delete-alert-outline"
+                                                                                                        iconSize="28"/>
+                                                                                            </graphic>
+                                                                                        </Label>
+                                                                                        <ToggleSwitch
+                                                                                                fx:id="askBeforeRemoveBtn"
+                                                                                                prefWidth="0.0"/>
+                                                                                    </children>
+                                                                                </HBox>
+                                                                                <HBox alignment="CENTER_LEFT"
+                                                                                      spacing="40.0">
+                                                                                    <children>
+                                                                                        <Label prefWidth="290.0"
+                                                                                               text="Ask before deleting files">
+
+                                                                                            <graphic>
+                                                                                                <FontIcon
+                                                                                                        iconLiteral="mdi2d-delete-forever-outline"
+                                                                                                        iconSize="28"/>
+                                                                                            </graphic>
+                                                                                        </Label>
+                                                                                        <ToggleSwitch
+                                                                                                fx:id="askBeforeDeleteBtn"
+                                                                                                prefWidth="0.0"/>
+                                                                                    </children>
+                                                                                </HBox>
+                                                                            </children>
+                                                                            <VBox.margin>
+                                                                                <Insets left="20.0"/>
+                                                                            </VBox.margin>
+                                                                        </VBox>
+                                                                    </children>
+                                                                </VBox>
+                                                                <VBox spacing="18.0">
+                                                                    <children>
+                                                                        <Label fx:id="protectionSubSectionLabel"
+                                                                               graphicTextGap="14.0" text="Protection">
+                                                                            <graphic>
+                                                                                <FontIcon
+                                                                                        iconLiteral="mdi2f-file-lock-outline"
+                                                                                        iconSize="42"/>
+                                                                            </graphic>
+
+                                                                        </Label>
+                                                                        <VBox spacing="16.0">
+                                                                            <children>
+                                                                                <HBox alignment="CENTER_LEFT"
+                                                                                      spacing="40.0">
+                                                                                    <children>
+                                                                                        <Label prefWidth="290.0"
+                                                                                               text="Lock files on closing the app">
+                                                                                            <graphic>
+                                                                                                <FontIcon
+                                                                                                        iconLiteral="mdi2d-door-closed-lock"
+                                                                                                        iconSize="28"/>
+                                                                                            </graphic>
+
+                                                                                        </Label>
+                                                                                        <ToggleSwitch
+                                                                                                fx:id="lockOnCloseBtn"
+                                                                                                prefWidth="0.0"/>
+                                                                                    </children>
+                                                                                </HBox>
+                                                                                <HBox alignment="CENTER_LEFT"
+                                                                                      spacing="40.0">
+                                                                                    <children>
+                                                                                        <Label prefWidth="290.0"
+                                                                                               text="Automatically unlock files to open">
+                                                                                            <graphic>
+                                                                                                <FontIcon
+                                                                                                        iconLiteral="mdi2b-book-lock-open-outline"
+                                                                                                        iconSize="28"/>
+                                                                                            </graphic>
+
+                                                                                        </Label>
+                                                                                        <ToggleSwitch
+                                                                                                fx:id="autoUnlockToOpenBtn"
+                                                                                                prefWidth="0.0"/>
+                                                                                    </children>
+                                                                                </HBox>
+                                                                                <HBox alignment="CENTER_LEFT"
+                                                                                      spacing="40.0">
+                                                                                    <children>
+                                                                                        <Label prefWidth="290.0"
+                                                                                               text="Automatically unlock files to send">
+
+                                                                                            <graphic>
+                                                                                                <FontIcon
+                                                                                                        iconLiteral="mdi2s-send-lock-outline"
+                                                                                                        iconSize="28"/>
+                                                                                            </graphic>
+                                                                                        </Label>
+                                                                                        <ToggleSwitch
+                                                                                                fx:id="autoUnlockToSendBtn"
+                                                                                                prefWidth="0.0"/>
+                                                                                    </children>
+                                                                                </HBox>
+                                                                            </children>
+                                                                            <VBox.margin>
+                                                                                <Insets left="20.0"/>
+                                                                            </VBox.margin>
+                                                                        </VBox>
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                            <padding>
+                                                                <Insets bottom="15.0" left="80.0" right="100.0"
+                                                                        top="20.0"/>
+                                                            </padding>
+                                                        </VBox>
+                                                    </content>
+                                                </ScrollPane>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane fx:id="accessibilitySubView" layoutX="10.0" layoutY="10.0" visible="false"
+                                            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <VBox layoutX="50.0" layoutY="34.0" spacing="44.0" AnchorPane.bottomAnchor="0.0"
+                                              AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="100.0"
+                                              AnchorPane.topAnchor="40.0">
+                                            <children>
+                                                <Label fx:id="accessibilityTitleLabel" graphicTextGap="14.0"
+                                                       text="Accessibility">
+                                                    <graphic>
+                                                        <FontIcon iconLiteral="fas-universal-access" iconSize="60"/>
+                                                    </graphic>
+
+                                                    <VBox.margin>
+                                                        <Insets/>
+                                                    </VBox.margin>
+                                                </Label>
+                                                <VBox spacing="70.0">
+                                                    <children>
+                                                        <VBox spacing="18.0">
+                                                            <children>
+                                                                <Label fx:id="dyslexicFontSubSectionLabel"
+                                                                       graphicTextGap="14.0" text="Dyslexic Font">
+                                                                    <graphic>
+                                                                        <FontIcon iconLiteral="mdi2f-format-font"
+                                                                                  iconSize="42"/>
+                                                                    </graphic>
+
+                                                                </Label>
+                                                                <VBox spacing="16.0">
+                                                                    <children>
+                                                                        <HBox alignment="CENTER_LEFT" spacing="40.0">
+                                                                            <children>
+                                                                                <Label fx:id="dyslexicLabel"
+                                                                                       prefWidth="320.0"
+                                                                                       text="Use an easy-to-read font for dyslexia">
+                                                                                    <graphic>
+                                                                                        <FontIcon
+                                                                                                iconLiteral="mdi2f-format-text-variant-outline"
+                                                                                                iconSize="28"/>
+                                                                                    </graphic>
+
+                                                                                </Label>
+                                                                                <ToggleSwitch fx:id="useDyslexicFontBtn"
+                                                                                              prefWidth="0.0"/>
+                                                                            </children>
+                                                                        </HBox>
+                                                                    </children>
+                                                                    <VBox.margin>
+                                                                        <Insets left="20.0"/>
+                                                                    </VBox.margin>
+                                                                </VBox>
+                                                            </children>
+                                                            <VBox.margin>
+                                                                <Insets/>
+                                                            </VBox.margin>
+                                                        </VBox>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets left="30.0"/>
+                                                    </VBox.margin>
+                                                </VBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane fx:id="aboutSubView" layoutX="10.0" layoutY="10.0" visible="false"
+                                            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <VBox layoutX="50.0" layoutY="34.0" spacing="44.0" AnchorPane.bottomAnchor="0.0"
+                                              AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="70.0"
+                                              AnchorPane.topAnchor="40.0">
+                                            <children>
+                                                <Label fx:id="aboutUsTitleLabel" graphicTextGap="14.0" text="About Us">
+                                                    <graphic>
+                                                        <FontIcon iconLiteral="far-question-circle" iconSize="60"/>
+                                                    </graphic>
+
+                                                    <VBox.margin>
+                                                        <Insets/>
+                                                    </VBox.margin>
+                                                </Label>
+                                                <VBox spacing="70.0">
+                                                    <VBox.margin>
+                                                        <Insets left="20.0"/>
+                                                    </VBox.margin>
+                                                    <children>
+                                                        <TextArea fx:id="aboutTextArea" editable="false"
+                                                                  prefHeight="481.0" prefWidth="626.0">
+                                                            <cursor>
+                                                                <Cursor fx:constant="DEFAULT"/>
+                                                            </cursor>
+                                                        </TextArea>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </AnchorPane>
+                        <HBox alignment="CENTER" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="0.0"
+                              AnchorPane.rightAnchor="0.0">
+                            <children>
+                                <Button fx:id="saveBtn" minWidth="120.0" mnemonicParsing="false"
+                                        onAction="#onSaveAction" text="Save">
+                                    <graphic>
+                                        <FontIcon iconLiteral="mdi2c-content-save-outline" iconSize="28"/>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </HBox>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </center>
+</BorderPane>
